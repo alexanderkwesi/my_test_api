@@ -1,0 +1,17 @@
+<div id="test_value" class="test_value">Click to get value</div>
+<script>
+document.getElementById('test_value').addEventListener('click', async function(){ 
+
+        const retrieve = await fetch('127.0.0.1:5500/data');
+        
+        if (retrieve.ok)
+         {
+            const json = retrieve.json();
+            document.getElementById('test_value').innerText = json.toString();
+        }
+        else
+        {
+            alert('HTTP-Error: ' + retrieve.status);
+        }
+});
+</script>
