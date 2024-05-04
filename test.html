@@ -2,16 +2,15 @@
 <script>
 document.getElementById('test_value').addEventListener('click', async function(){ 
 
-        const retrieve = await fetch('127.0.0.1:5500/data');
+const octokit = new Octokit({
+  auth: 'YOUR-TOKEN'
+})
+
+await octokit.request('GET /installation/repositories', {
+  headers: {
+    'X-GitHub-Api-Version': '2022-11-28'
+  }
+})
         
-        if (retrieve.ok)
-         {
-            const json = retrieve.json();
-            document.getElementById('test_value').innerText = json.toString();
-        }
-        else
-        {
-            alert('HTTP-Error: ' + retrieve.status);
-        }
 });
 </script>
