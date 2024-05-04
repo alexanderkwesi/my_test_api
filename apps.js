@@ -11,5 +11,5 @@ apps.get('/data', function(request, response) {
     response.json(responseData.message); 
 });
 // Start the server
-var PORT = 5500;
+var PORT = 443;
 apps.listen(PORT, function () { return console.log("Server running on port ".concat(PORT)); });
