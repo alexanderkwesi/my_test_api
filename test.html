@@ -1,14 +1,34 @@
 <div id="test_value" class="test_value">Click to get value</div>
 <script>
+import { Octokit } from "octokit";
 import { App } from "octokit";
 
 document.getElementById('test_value').addEventListener('click', async function(){ 
 
-const app = new App({
-  appId: 891477,
-  privateKey: mByqfDrUUh9am698H/GsmAd7c401DCBi21BvuGvW8pM=,
+const octokit = new Octokit({ 
+  auth: process.env.TOKEN
 });
-await app.get('/app');
+
+try {
+  const result = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+      owner: "alexanderkwesi",
+      repo: "my_test_api",
+    });
+
+  const titleAndAuthor = result.data.map(issue => {message: issue.title, Date: issue.date.now()})
+
+  alert(titleAndAuthor);
+
+} catch (error) {
+  console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
+}
+ 
+
+//const app = new App({
+  //appId: 891477,
+  //privateKey: mByqfDrUUh9am698H/GsmAd7c401DCBi21BvuGvW8pM=,
+//});
+//await app.get('/app');
  document.getElementById('test_value').innerText = '';       
 });
 </script>
