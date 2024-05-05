@@ -12,13 +12,13 @@ const octokit = new Octokit({
   }, 
 });
 
-await octokit.request("POST /repos/{owner}/{repo}/issues", {
-  owner: "alexanderkwesi",
-  repo: "my_test_api",
-  title: "Created with the REST API",
-  body: "This is a test issue created by the REST API",
-  date: date.now(),
-});
+//await octokit.request("POST /repos/{owner}/{repo}/issues", {
+  //owner: "alexanderkwesi",
+  //repo: "my_test_api",
+  //title: "Created with the REST API",
+  //body: "This is a test issue created by the REST API",
+  //date: date.now(),
+//});
 
 await octokit.request("GET /octocat", {
   headers: {
