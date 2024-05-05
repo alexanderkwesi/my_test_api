@@ -10,5 +10,5 @@ apps.get('/data', (request:Request, response:Response) => {
   response.json(responseData.message);
 });
 // Start the server
-const PORT = 443;
+const PORT = 3000;
 apps.listen(PORT, () => console.log(`Server running on port ${PORT}`));
