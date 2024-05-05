@@ -2,23 +2,13 @@
 <script>
 import { App } from "octokit";
 
+document.getElementById('test_value').addEventListener('click', async function(){ 
+
 const app = new App({
   appId: 891477,
   privateKey: mByqfDrUUh9am698H/GsmAd7c401DCBi21BvuGvW8pM=,
 });
-
-const octokit = await app.getInstallationOctokit(INSTALLATION_ID);
-document.getElementById('test_value').addEventListener('click', async function(){ 
-
-const octokits = new Octokit({
-  auth: 'YOUR-TOKEN'
-});
-
-await octokits.request('GET /installation/repositories', {
-  headers: {
-    'X-GitHub-Api-Version': '1'
-  }
-});
+await app.get('/app');
  document.getElementById('test_value').innerText = '';       
 });
 </script>
